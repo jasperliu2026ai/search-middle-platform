@@ -106,10 +106,10 @@ What still needs work:
 
 ## Documentation
 
-- Chinese documentation: `docs/README.zh-CN.md`
-- Architecture document: `docs/architecture.md`
-- Flowchart: `docs/flowchart.md`
-- Mermaid source: `docs/flowchart.mmd`
+- 中文文档入口：`docs/README.zh-CN.md`
+- 架构说明：`docs/architecture.md`
+- 流程图说明：`docs/flowchart.md`
+- Mermaid 源文件：`docs/flowchart.mmd`
 
 ## Related Repository
 
