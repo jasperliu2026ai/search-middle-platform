@@ -1,45 +1,123 @@
-# search-middle-platform
+# Search Middle Platform
 
-多源搜索中台 Skill。
+A multi-source search skill for routing, aggregation, arbitration, and answer synthesis.
 
-输入一个查询，自动完成：
-- 查询分类
-- 搜索源选择
-- 多源搜索
-- 去重与基础仲裁
-- 最终答案收敛
+`search-middle-platform` is designed for agent workflows that need more than a single quick search call. It provides a compact pipeline for classifying queries, selecting search routes, aggregating results, de-duplicating noisy outputs, and producing a tighter final answer.
 
-## 适合场景
+## Overview
 
-- 技术问题搜索
-- 通用网页搜索
-- 图片聚合搜索
+This repository packages the search middle platform as an installable skill and includes the scripts that power its current beta workflow.
 
-## 仓库内容
+It is best suited for:
+- technical troubleshooting and debugging research
+- general web search with multi-source aggregation
+- image-oriented search flows
+- answer-oriented search pipelines that benefit from arbitration
 
-- `search-middle-platform/`：技能本体
-- `search-middle-platform.skill`：已打包好的 skill 文件
+## Repository Layout
 
-## 当前组件
+- `search-middle-platform/` — installable skill folder
+- `search-middle-platform/SKILL.md` — primary skill definition
+- `search-middle-platform/scripts/` — executable search pipeline scripts
+- `search-middle-platform/references/` — supporting documentation and historical notes
+- `search-middle-platform.skill` — packaged distributable skill file
 
-- `search_hub.js`
-- `multi_source_search_mvp.js`
-- `tech_search_mvp.js`
-- `tech_search_pro.js`
-- `tech_search_ultimate.js`
-- `search_multi_source_images.js`
-- `search_router_mvp.js`
-- `search_arbiter_mvp.js`
-- `search_answer_mvp.js`
-- `search_answer_nl.js`
+## Current Pipeline Shape
 
-## 用法示例
+The current implementation follows a hub → route → search → arbitrate → answer shape.
+
+Main components:
+- `scripts/search_hub.js` — unified entry point
+- `scripts/search_router_mvp.js` — route selection
+- `scripts/multi_source_search_mvp.js` — general multi-source search
+- `scripts/tech_search_mvp.js` — baseline technical search
+- `scripts/tech_search_pro.js` — stronger technical search path
+- `scripts/tech_search_ultimate.js` — expanded technical search path
+- `scripts/search_multi_source_images.js` — image aggregation search
+- `scripts/search_arbiter_mvp.js` — basic result arbitration
+- `scripts/search_answer_mvp.js` — final answer synthesis
+- `scripts/search_answer_nl.js` — natural-language answer rendering
+
+## Supported Routes
+
+- `tech`
+- `general`
+- `image`
+
+## Quick Start
+
+Run the unified entry script:
+
+`node search-middle-platform/scripts/search_hub.js "OpenClaw browser timeout" output/search_hub`
+
+Or from inside the skill folder:
 
 `node scripts/search_hub.js "OpenClaw browser timeout" output/search_hub`
 
-## 当前状态
+## What the Skill Does
 
-Beta 可用：
-- 主骨架完成
-- 三类基础场景已验证
-- 后续可继续加强仲裁、分类和最终答案包装
+Given one query, the current system can:
+- classify the query type
+- choose a suitable search route
+- run the relevant search flow
+- normalize and de-duplicate raw outputs
+- perform lightweight arbitration
+- generate a tighter final answer
+
+## Installation
+
+### Option 1: Use the skill folder
+
+Copy `search-middle-platform/` into your agent's skills directory and load it via your normal skills workflow.
+
+### Option 2: Import the packaged skill
+
+Use the bundled file:
+- `search-middle-platform.skill`
+
+Import it into an environment that supports AgentSkills.
+
+## Design Goals
+
+This project aims to keep the external interface simple while allowing the internal search stack to grow.
+
+Target qualities:
+- one entry point
+- explicit route selection
+- reusable source pipelines
+- visible arbitration stage
+- answer synthesis as a separate layer
+
+## Current Status
+
+This is a beta repository.
+
+What is already true:
+- the overall skeleton is in place
+- three base scenarios have been validated
+- the skill is usable for real experimentation
+
+What still needs work:
+- stronger arbitration quality
+- tighter classification logic
+- more consistent output schemas across routes
+- better automated tests
+- better source abstraction and shared utilities
+
+## Related Repository
+
+This skill is referenced by the team-mode operating model here:
+- `https://github.com/jasperliu2026ai/team-mode-skill`
+
+## Customization Ideas
+
+Common next steps for teams adopting this repository:
+- add more data sources behind the router layer
+- define a stable output schema for all routes
+- add confidence scores and ranking logic
+- improve answer synthesis prompts and post-processing
+- add minimal regression tests for the key scripts
+
+## License
+
+MIT
