@@ -107,6 +107,7 @@ What still needs work:
 ## Documentation
 
 - Chinese documentation: `docs/README.zh-CN.md`
+- Architecture document: `docs/architecture.md`
 - Flowchart: `docs/flowchart.md`
 - Mermaid source: `docs/flowchart.mmd`
 
