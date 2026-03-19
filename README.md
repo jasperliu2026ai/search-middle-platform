@@ -104,6 +104,12 @@ What still needs work:
 - better automated tests
 - better source abstraction and shared utilities
 
+## Documentation
+
+- Chinese documentation: `docs/README.zh-CN.md`
+- Flowchart: `docs/flowchart.md`
+- Mermaid source: `docs/flowchart.mmd`
+
 ## Related Repository
 
 This skill is referenced by the team-mode operating model here:
