@@ -1,54 +1,54 @@
-# Roadmap
+# 路线图
 
-## Phase 1 - Solidify the Beta Foundation
+## 阶段 1：夯实 Beta 基础
 
-Goal: make the current beta skeleton stable enough for repeated real-world usage.
+目标：让当前这套 Beta 骨架能稳定支撑重复使用。
 
-Planned work:
-- unify output schema across `tech`, `general`, and `image`
-- clean up shared utility logic across scripts
-- improve route classification quality
-- strengthen error reporting and raw output tracing
-- reduce hidden coupling on working directory and invocation style
+计划内容：
+- 统一 `tech`、`general`、`image` 三条路线的输出 schema
+- 清理脚本之间重复的公共逻辑
+- 提升路由分类质量
+- 增强错误输出与原始结果追踪能力
+- 降低对工作目录和调用方式的脆弱依赖
 
-## Phase 2 - Stronger Arbitration
+## 阶段 2：增强仲裁能力
 
-Goal: improve result quality, not just result quantity.
+目标：不只是结果多，而是结果更准、更稳。
 
-Planned work:
-- add source weighting and scoring
-- add consistency checks across multiple sources
-- detect conflicting information explicitly
-- improve ranking after de-duplication
-- expose confidence hints in final output
+计划内容：
+- 增加 source 权重与评分机制
+- 增加多源一致性检查
+- 显式识别互相冲突的信息
+- 优化去重后的排序逻辑
+- 在最终输出里暴露置信度提示
 
-## Phase 3 - Source Abstraction
+## 阶段 3：抽象 Source Adapter
 
-Goal: make it easier to add or replace search providers.
+目标：降低新增搜索源或替换搜索源的成本。
 
-Planned work:
-- introduce a source adapter layer
-- standardize source result format
-- separate provider-specific code from routing logic
-- define source capability metadata
+计划内容：
+- 引入 source adapter 层
+- 统一不同搜索源的结果结构
+- 把 provider 相关代码和路由逻辑解耦
+- 定义 source 能力元数据
 
-## Phase 4 - Better Observability and Testing
+## 阶段 4：增强可观测性与测试
 
-Goal: make the platform easier to debug and safer to evolve.
+目标：让系统更容易排障，也更安全地继续演进。
 
-Planned work:
-- add minimal regression tests
-- add route-level test cases
-- add schema validation tests
-- snapshot intermediate pipeline outputs for debugging
-- improve failure logs and traceability
+计划内容：
+- 增加最小回归测试
+- 增加路由层测试样例
+- 增加 schema 校验测试
+- 对关键中间产物做快照，便于调试
+- 增强失败日志和追踪链路
 
-## Phase 5 - Productized Platform Layer
+## 阶段 5：走向更完整的平台化
 
-Goal: move from a practical internal skill to a more mature reusable search platform.
+目标：从内部实用 skill，逐步走向更成熟、可复用的搜索平台。
 
-Planned work:
-- add clearer extension conventions
-- add more documentation for adopters
-- add example integration patterns for agent frameworks
-- support richer answer packaging and reporting formats
+计划内容：
+- 增加更清晰的扩展约定
+- 增强给接入方看的文档
+- 增加面向 Agent 框架的接入样例
+- 支持更丰富的答案包装和结果报告格式

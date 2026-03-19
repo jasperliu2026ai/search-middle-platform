@@ -1,28 +1,28 @@
 ---
 name: search-middle-platform
-description: Multi-source search middle platform for routing, aggregation, arbitration, and answer synthesis across technical search, general web search, and image aggregation. Use when a task needs query classification, source selection, de-duplication, result arbitration, or a final answer built from multiple search sources rather than a single quick lookup.
+description: 多源搜索中台 Skill，用于技术搜索、通用网页搜索、图片聚合搜索中的查询分类、搜索路由、结果聚合、去重仲裁和答案收敛。当任务不只是一次单源快速查询，而是需要根据问题类型选择路线、整合多个来源并输出更收敛的最终答案时使用。
 ---
 
 # Search Middle Platform
 
-Route one query through a compact search pipeline.
+把单个查询送进一条结构化的搜索流水线。
 
-## What it does
+## 它做什么
 
-Given a query, this skill can:
-- classify the query
-- select the search route
-- run one or more search flows
-- de-duplicate and arbitrate results
-- synthesize a final answer
+给定一个查询，这个 skill 可以：
+- 判断查询类型
+- 选择搜索路线
+- 执行一条或多条搜索流程
+- 对结果做去重和基础仲裁
+- 生成最终答案
 
-## Current routes
+## 当前支持的路线
 
 - `tech`
 - `general`
 - `image`
 
-## Current components
+## 当前组件
 
 - `scripts/search_hub.js`
 - `scripts/multi_source_search_mvp.js`
@@ -35,31 +35,31 @@ Given a query, this skill can:
 - `scripts/search_answer_mvp.js`
 - `scripts/search_answer_nl.js`
 
-## Entry point
+## 统一入口
 
-Use the unified entry script:
+使用统一入口脚本：
 - `node scripts/search_hub.js "<query>" <output-dir>`
 
-Example:
+示例：
 - `node scripts/search_hub.js "OpenClaw browser timeout" output/search_hub`
 
-## Recommended workflow
+## 推荐工作流
 
-1. Decide whether the query is `tech`, `general`, or `image`
-2. Route to the matching search flow
-3. Aggregate and normalize raw results
-4. Run basic arbitration
-5. Return the final answer with raw output path if relevant
+1. 判断查询属于 `tech`、`general` 还是 `image`
+2. 路由到对应的搜索流程
+3. 聚合并标准化原始结果
+4. 做基础仲裁
+5. 返回最终答案和原始输出路径（如果需要）
 
-## References
+## 参考文档
 
-Read when needed:
+按需阅读：
 - `references/search-middle-platform-skill.md`
 - `references/search-middle-platform-tests.md`
 
-## Status
+## 当前状态
 
-This is a beta skill:
-- core skeleton is complete
-- three base scenarios have been validated
-- arbitration, classification, and answer packaging can still be improved
+这是一个 Beta skill：
+- 核心骨架已经完成
+- 三类基础场景已经验证
+- 仲裁、分类和答案包装仍可继续增强

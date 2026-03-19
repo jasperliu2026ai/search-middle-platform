@@ -1,24 +1,24 @@
-# TODO
+# 待办清单
 
-## High Priority
+## 高优先级
 
-- Define a stable unified output schema
-- Refactor duplicated helper logic
-- Improve query classification rules
-- Make arbitration output more explainable
-- Add minimal automated tests for key flows
+- 定义稳定统一的输出 schema
+- 重构重复的 helper 逻辑
+- 提升查询分类规则
+- 让仲裁输出更可解释
+- 为关键链路补最小自动化测试
 
-## Medium Priority
+## 中优先级
 
-- Introduce source adapter abstraction
-- Add confidence scoring
-- Add route-specific examples
-- Improve natural-language answer packaging
-- Add better intermediate output snapshots
+- 引入 source adapter 抽象
+- 增加置信度评分
+- 增加不同路线的使用示例
+- 优化自然语言答案包装
+- 增加更清晰的中间产物快照
 
-## Low Priority
+## 低优先级
 
-- Add richer visual documentation
-- Add benchmark examples for route quality
-- Add more extensibility examples for contributors
-- Add optional metrics collection hooks
+- 增加更丰富的可视化文档
+- 增加路线质量 benchmark 示例
+- 增加给贡献者看的扩展样例
+- 增加可选的指标采集钩子

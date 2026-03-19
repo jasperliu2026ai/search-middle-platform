@@ -1,114 +1,115 @@
 # Search Middle Platform
 
-A multi-source search skill for routing, aggregation, arbitration, and answer synthesis.
+一套面向 Agent 的多源搜索中台 Skill，用来做路由、聚合、仲裁和答案收敛。
 
-`search-middle-platform` is designed for agent workflows that need more than a single quick search call. It provides a compact pipeline for classifying queries, selecting search routes, aggregating results, de-duplicating noisy outputs, and producing a tighter final answer.
+`search-middle-platform` 不是单次“搜一下”的脚本，而是一套把搜索流程中台化的能力骨架。
+它适合那些不满足于单源搜索、需要根据查询类型切路线、需要对结果做聚合和仲裁、最后还要产出更收敛答案的场景。
 
-## Overview
+## 概览
 
-This repository packages the search middle platform as an installable skill and includes the scripts that power its current beta workflow.
+这个仓库打包了 `search-middle-platform` Skill 本体，以及当前 Beta 工作流用到的脚本和文档。
 
-## Architecture Diagram
+## 架构图
 
 ![Search Middle Platform Architecture](docs/architecture-diagram.png)
 
-It is best suited for:
-- technical troubleshooting and debugging research
-- general web search with multi-source aggregation
-- image-oriented search flows
-- answer-oriented search pipelines that benefit from arbitration
+它特别适合这些任务：
+- 技术问题排障与检索
+- 通用网页搜索的多源聚合
+- 图片搜索与图片结果聚合
+- 需要“搜索 + 仲裁 + 答案收敛”的 Agent 工作流
 
-## Repository Layout
+## 仓库结构
 
-- `search-middle-platform/` — installable skill folder
-- `search-middle-platform/SKILL.md` — primary skill definition
-- `search-middle-platform/scripts/` — executable search pipeline scripts
-- `search-middle-platform/references/` — supporting documentation and historical notes
-- `search-middle-platform.skill` — packaged distributable skill file
+- `search-middle-platform/`：可安装的 skill 目录
+- `search-middle-platform/SKILL.md`：技能定义文件
+- `search-middle-platform/scripts/`：搜索流程脚本
+- `search-middle-platform/references/`：补充文档和历史说明
+- `search-middle-platform.skill`：打包好的可分发 skill 文件
 
-## Current Pipeline Shape
+## 当前流水线形态
 
-The current implementation follows a hub → route → search → arbitrate → answer shape.
+当前实现遵循这样一条链路：
 
-Main components:
-- `scripts/search_hub.js` — unified entry point
-- `scripts/search_router_mvp.js` — route selection
-- `scripts/multi_source_search_mvp.js` — general multi-source search
-- `scripts/tech_search_mvp.js` — baseline technical search
-- `scripts/tech_search_pro.js` — stronger technical search path
-- `scripts/tech_search_ultimate.js` — expanded technical search path
-- `scripts/search_multi_source_images.js` — image aggregation search
-- `scripts/search_arbiter_mvp.js` — basic result arbitration
-- `scripts/search_answer_mvp.js` — final answer synthesis
-- `scripts/search_answer_nl.js` — natural-language answer rendering
+`入口 → 路由 → 搜索执行 → 仲裁 → 答案收敛`
 
-## Supported Routes
+主要组件：
+- `scripts/search_hub.js`：统一入口
+- `scripts/search_router_mvp.js`：路由选择
+- `scripts/multi_source_search_mvp.js`：通用多源搜索
+- `scripts/tech_search_mvp.js`：基础技术搜索
+- `scripts/tech_search_pro.js`：增强技术搜索
+- `scripts/tech_search_ultimate.js`：扩展技术搜索
+- `scripts/search_multi_source_images.js`：图片聚合搜索
+- `scripts/search_arbiter_mvp.js`：基础结果仲裁
+- `scripts/search_answer_mvp.js`：答案收敛输出
+- `scripts/search_answer_nl.js`：自然语言答案包装
+
+## 当前支持的路线
 
 - `tech`
 - `general`
 - `image`
 
-## Quick Start
+## 快速开始
 
-Run the unified entry script:
+从仓库根目录运行：
 
 `node search-middle-platform/scripts/search_hub.js "OpenClaw browser timeout" output/search_hub`
 
-Or from inside the skill folder:
+或者从 skill 目录运行：
 
 `node scripts/search_hub.js "OpenClaw browser timeout" output/search_hub`
 
-## What the Skill Does
+## 这套 Skill 能做什么
 
-Given one query, the current system can:
-- classify the query type
-- choose a suitable search route
-- run the relevant search flow
-- normalize and de-duplicate raw outputs
-- perform lightweight arbitration
-- generate a tighter final answer
+给定一个查询，当前系统可以：
+- 判断查询属于哪一类
+- 选择合适的搜索路线
+- 执行对应的搜索流程
+- 对原始结果做标准化和去重
+- 做轻量仲裁
+- 生成更收敛的最终答案
 
-## Installation
+## 安装方式
 
-### Option 1: Use the skill folder
+### 方式一：直接使用 skill 目录
 
-Copy `search-middle-platform/` into your agent's skills directory and load it via your normal skills workflow.
+把 `search-middle-platform/` 放进你的 Agent skills 目录里，然后按你自己的 skills 工作流加载它。
 
-### Option 2: Import the packaged skill
+### 方式二：直接导入打包文件
 
-Use the bundled file:
+使用仓库里的：
 - `search-middle-platform.skill`
 
-Import it into an environment that supports AgentSkills.
+把它导入支持 AgentSkills 的环境即可。
 
-## Design Goals
+## 设计目标
 
-This project aims to keep the external interface simple while allowing the internal search stack to grow.
+这套项目希望做到：
+- 对外只有一个简单入口
+- 对内有明确的路由层
+- 搜索源和搜索路线可以复用
+- 仲裁层清晰可见
+- 答案收敛层独立存在
 
-Target qualities:
-- one entry point
-- explicit route selection
-- reusable source pipelines
-- visible arbitration stage
-- answer synthesis as a separate layer
+## 当前状态
 
-## Current Status
+这是一个 Beta 仓库。
 
-This is a beta repository.
+已经成立的部分：
+- 整体架构骨架已经搭起来了
+- 三类基础场景已经验证过
+- 已经可以拿来做真实实验和内部使用
 
-What is already true:
-- the overall skeleton is in place
-- three base scenarios have been validated
-- the skill is usable for real experimentation
+还需要继续加强的部分：
+- 仲裁质量还不够强
+- 分类逻辑还能继续收紧
+- 各路线输出 schema 还不够统一
+- 自动化测试还不够
+- 公共工具层和 source adapter 抽象还可以更好
 
-What still needs work:
-- stronger arbitration quality
-- tighter classification logic
-- more consistent output schemas across routes
-- better automated tests
-- better source abstraction and shared utilities
-
-## Documentation
+## 文档
 
 - 中文文档入口：`docs/README.zh-CN.md`
 - 架构说明：`docs/architecture.md`
@@ -116,23 +117,23 @@ What still needs work:
 - Mermaid 源文件：`docs/flowchart.mmd`
 - 架构图 Mermaid：`docs/architecture-diagram.mmd`
 - 架构图 PNG：`docs/architecture-diagram.png`
-- Roadmap：`docs/ROADMAP.md`
-- TODO：`docs/TODO.md`
-- Milestones：`docs/MILESTONES.md`
+- 路线图：`docs/ROADMAP.md`
+- 待办清单：`docs/TODO.md`
+- 里程碑：`docs/MILESTONES.md`
 
-## Related Repository
+## 相关仓库
 
-This skill is referenced by the team-mode operating model here:
+这套搜索中台被 `team-mode-skill` 作为推荐搜索底座引用：
 - `https://github.com/jasperliu2026ai/team-mode-skill`
 
-## Customization Ideas
+## 可扩展方向
 
-Common next steps for teams adopting this repository:
-- add more data sources behind the router layer
-- define a stable output schema for all routes
-- add confidence scores and ranking logic
-- improve answer synthesis prompts and post-processing
-- add minimal regression tests for the key scripts
+后续接入这套仓库时，常见扩展方向包括：
+- 在路由层后面增加更多搜索源
+- 为所有路线定义统一输出结构
+- 增加可信度评分与排序逻辑
+- 优化答案收敛逻辑和输出格式
+- 给关键脚本补最小回归测试
 
 ## License
 

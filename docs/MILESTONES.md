@@ -1,43 +1,43 @@
-# Milestones
+# 里程碑
 
-## Milestone 1 - Beta Skeleton Available
+## 里程碑 1：Beta 骨架可用
 
-Definition:
-- unified entry exists
-- route split exists
-- three base route types are available
-- arbitration and answer layers exist
+定义：
+- 已经有统一入口
+- 已经有路由拆分
+- 三类基础路线已经具备
+- 已经有仲裁层和答案层
 
-Status:
-- reached
+状态：
+- 已达成
 
-## Milestone 2 - Stable Internal Reuse
+## 里程碑 2：内部稳定复用
 
-Definition:
-- repeated internal use becomes predictable
-- output structure is more consistent
-- common failure modes are observable
-- basic tests protect the main flows
+定义：
+- 重复内部使用时表现更稳定
+- 输出结构更一致
+- 常见失败路径更容易观测
+- 基础测试能保护主流程
 
-Status:
-- in progress
+状态：
+- 进行中
 
-## Milestone 3 - Extensible Search Platform
+## 里程碑 3：可扩展的搜索平台
 
-Definition:
-- new sources can be added with lower coupling
-- source adapter conventions are documented
-- route and arbitration logic are easier to extend
+定义：
+- 新搜索源可以更低耦合地接入
+- source adapter 约定被文档化
+- 路由和仲裁逻辑更容易扩展
 
-Status:
-- planned
+状态：
+- 已规划
 
-## Milestone 4 - Public-Facing Open Source Quality
+## 里程碑 4：达到对外开源展示质量
 
-Definition:
-- documentation is strong enough for outside adopters
-- architecture and extension points are clearly explained
-- roadmap and contribution direction are visible
+定义：
+- 文档足够支撑外部接入者理解
+- 架构和扩展点说明清楚
+- 路线图和演进方向清晰可见
 
-Status:
-- in progress
+状态：
+- 进行中
