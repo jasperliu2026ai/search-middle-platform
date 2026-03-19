@@ -8,6 +8,10 @@ A multi-source search skill for routing, aggregation, arbitration, and answer sy
 
 This repository packages the search middle platform as an installable skill and includes the scripts that power its current beta workflow.
 
+## Architecture Diagram
+
+![Search Middle Platform Architecture](docs/architecture-diagram.png)
+
 It is best suited for:
 - technical troubleshooting and debugging research
 - general web search with multi-source aggregation
@@ -110,6 +114,11 @@ What still needs work:
 - 架构说明：`docs/architecture.md`
 - 流程图说明：`docs/flowchart.md`
 - Mermaid 源文件：`docs/flowchart.mmd`
+- 架构图 Mermaid：`docs/architecture-diagram.mmd`
+- 架构图 PNG：`docs/architecture-diagram.png`
+- Roadmap：`docs/ROADMAP.md`
+- TODO：`docs/TODO.md`
+- Milestones：`docs/MILESTONES.md`
 
 ## Related Repository
 

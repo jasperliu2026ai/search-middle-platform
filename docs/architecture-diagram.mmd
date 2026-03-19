@@ -1,0 +1,35 @@
+flowchart TB
+    U[User Query] --> H[search_hub.js\nUnified Entry]
+    H --> R[search_router_mvp.js\nClassification & Routing]
+
+    R --> T[Tech Route]
+    R --> G[General Route]
+    R --> I[Image Route]
+
+    T --> T1[tech_search_mvp.js]
+    T --> T2[tech_search_pro.js]
+    T --> T3[tech_search_ultimate.js]
+    G --> G1[multi_source_search_mvp.js]
+    I --> I1[search_multi_source_images.js]
+
+    T1 --> A[search_arbiter_mvp.js\nArbitration & Deduplication]
+    T2 --> A
+    T3 --> A
+    G1 --> A
+    I1 --> A
+
+    A --> S1[search_answer_mvp.js]
+    A --> S2[search_answer_nl.js]
+
+    S1 --> O[Final Answer + Raw Output Path]
+    S2 --> O
+
+    classDef core fill:#2563eb,stroke:#1e3a8a,color:#fff;
+    classDef route fill:#059669,stroke:#065f46,color:#fff;
+    classDef exec fill:#7c3aed,stroke:#4c1d95,color:#fff;
+    classDef output fill:#ea580c,stroke:#9a3412,color:#fff;
+
+    class H,R,A core;
+    class T,G,I route;
+    class T1,T2,T3,G1,I1,S1,S2 exec;
+    class O output;
